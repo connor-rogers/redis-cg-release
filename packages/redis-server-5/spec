@@ -1,5 +1,5 @@
 ---
-name: redis-server_5
+name: redis-server-5
 
 dependencies: []
 

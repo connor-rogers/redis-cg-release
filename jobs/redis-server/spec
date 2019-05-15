@@ -4,6 +4,7 @@ name: redis-server
 templates:
   ctl.erb: bin/ctl
 
-packages: []
+packages:
+- redis-server-5
 
 properties: {}
