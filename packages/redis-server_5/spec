@@ -1,0 +1,7 @@
+---
+name: redis-server_5
+
+dependencies: []
+
+files:
+- redis-5/redis-server.tar.gz
