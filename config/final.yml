@@ -1,7 +1,6 @@
 ---
-name: redis-cg
 blobstore:
   provider: local
   options:
     blobstore_path: /tmp/redis-blobs
-final_name: redis-server-5
+final_name: redis-cg

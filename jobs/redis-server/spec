@@ -7,4 +7,10 @@ templates:
 packages:
 - redis-server-5
 
-properties: {}
+properties:
+  port:
+    description: The port that Redis will listen on
+    default: 6379
+  password:
+    description: The Auth password to use on this Redis server
+

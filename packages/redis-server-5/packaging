@@ -3,11 +3,9 @@ set -e -x
 tar xzf redis-5/redis-server.tar.gz
 rm -f redis-5/redis-server.tar.gz
 
-pushd redis-server
-  ./configure --prefix=${BOSH_INSTALL_TARGET}
-
+pushd redis-5.0.4
   make
-  make install
 
-# remove anything that it is not redis-server
+  cp src/redis-server ${BOSH_INSTALL_TARGET}/redis-server
+
 popd

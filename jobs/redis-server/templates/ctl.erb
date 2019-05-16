@@ -3,6 +3,7 @@
 RUN_DIR=/var/vcap/sys/run/redis-server
 LOG_DIR=/var/vcap/sys/log/redis-server
 PIDFILE=${RUN_DIR}/pid
+REDIS_PATH=/var/vcap/packages/redis-server-5
 
 case $1 in
 
@@ -12,9 +13,11 @@ case $1 in
 
     echo $$ > $PIDFILE
 
-    cd /var/vcap/packages/redis-server/
+    echo "requirepass <%= p('password') %>" > $REDIS_PATH/redis.conf
 
-    exec /var/vcap/packages/redis-server/something.bin \
+    exec $REDIS_PATH/redis-server \
+      $REDIS_PATH/redis.conf \
+      --port <%= p('port') %> \
       >>  $LOG_DIR/redis-server.stdout.log \
       2>> $LOG_DIR/redis-server.stderr.log
 
