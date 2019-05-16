@@ -4,10 +4,10 @@ To use this service:
 
 1. deploy [redis-example-app](https://github.com/pivotal-cf/cf-redis-example-app)
     ```
-     $ git clone git@github.com:pivotal-cf/cf-redis-example-app.git && \
-         pushd cf-redis-example-app && \
-         cf push <app_name> --no-start && \
-         popd
+     git clone git@github.com:pivotal-cf/cf-redis-example-app.git && \
+       pushd cf-redis-example-app && \
+       cf push <app_name> --no-start && \
+       popd
     ```
 1. clone the repo
     ```
@@ -23,7 +23,7 @@ To use this service:
     ```
 1. upload-release
     ```
-    bosh upload-release --force
+    bosh upload-release
     ```
 1. edit the manifest
     1. add it to the release section
@@ -81,14 +81,15 @@ To use this service:
     ```
 1. create user provided service definition
     ```
-    cf create-user-provided-service redis -p "{\"host\":\"<service_ip>\",\"port\":\"<port>\",\"password\":\"<password>\"}"
+    cf create-user-provided-service redis -p '{"host":"<service_ip>","port":"<port>","password":"<password>"}'
     ```
-1. restage the app
+1. start the app
     ```
     cf start <app_name>
     ```
-1. test the 
+1. test the app
     ```
     $ curl -X PUT http://<route_to_app>/foo -d "data=bar"
-    $ curl -X GET http://<route_to_app>/foo` should equal to `bar
+    $ curl -X GET http://<route_to_app>/foo
+    bar
     ```
