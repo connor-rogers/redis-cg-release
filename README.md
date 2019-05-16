@@ -1,7 +1,14 @@
 # redis-cg-release
 
-to make this work 
+To use this service:
 
+1. deploy [redis-example-app](https://github.com/pivotal-cf/cf-redis-example-app)
+    ```
+     $ git clone git@github.com:pivotal-cf/cf-redis-example-app.git && \
+         pushd cf-redis-example-app && \
+         cf push redis-example-app --no-start && \
+         popd
+    ```
 1. clone the repo
 `git clone git@github.com:connor-rogers/redis-cg-release.git`
 1. cd into the repo
@@ -44,12 +51,13 @@ to make this work
     [
       {
         "protocol": "tcp",
-        "destination": "10.0.1.15/32",
-        "ports": "6379",
+        "destination": "<service_ip>/32",
+        "ports": "<port>",
         "description": "Exposes the Redis VM to the app"
       }
     ]
     ```
+    to get the service ip run `bosh vms | grep redis-master | awk '{ print $4 }'`
     - create ASG
     `cf create-security-group <asg-name> security.json`
     - bind ASG to org
