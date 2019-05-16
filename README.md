@@ -10,13 +10,21 @@ To use this service:
          popd
     ```
 1. clone the repo
-`git clone git@github.com:connor-rogers/redis-cg-release.git`
+    ```
+    git clone git@github.com:connor-rogers/redis-cg-release.git
+    ```
 1. cd into the repo
-`cd redis-cg-release`
+    ```
+    cd redis-cg-release
+    ```
 1. Create a release
-`bosh create-release --force`
+    ```
+    bosh create-release --force
+    ```
 1. upload-release
-`bosh upload-release --force`
+    ```
+    bosh upload-release --force
+    ```
 1. edit the manifest
     1. add it to the release section
     ```yaml
@@ -44,7 +52,9 @@ To use this service:
         - name: default
     ```
 1. deploy CF with the new manifest
-`bosh -d cf deploy <path-to-manifest>`
+    ```
+    bosh -d cf deploy <path-to-manifest>
+    ```
 1. create ASG
     - create ASG definition
     ```json
@@ -57,15 +67,28 @@ To use this service:
       }
     ]
     ```
-    to get the service ip run `bosh vms | grep redis-master | awk '{ print $4 }'`
+    to get the service ip run 
+    ```
+    bosh vms | grep redis-master | awk '{ print $4 }'
+    ```
     - create ASG
-    `cf create-security-group <asg-name> security.json`
+    ```
+    cf create-security-group <asg-name> security.json
+    ```
     - bind ASG to org
-    `cf bind-security-group <asg-name> <org-name> <space-name>`
+    ```
+    cf bind-security-group <asg-name> <org-name> <space-name>
+    ```
 1. create user provided service definition
-`cf create-user-provided-service redis -p "{\"host\":\"<service_ip>\",\"port\":\"<port>\",\"password\":\"<password>\"}"`
+    ```
+    cf create-user-provided-service redis -p "{\"host\":\"<service_ip>\",\"port\":\"<port>\",\"password\":\"<password>\"}"
+    ```
 1. restage the app
-`cf restage <app_name>`
+    ```
+    cf restage <app_name>
+    ```
 1. test the 
-`curl -X PUT http://<route_to_app>/foo -d "data=bar"`
-`curl -X GET http://<route_to_app>/foo` should equal to `bar`
+    ```
+    $ curl -X PUT http://<route_to_app>/foo -d "data=bar"
+    $ curl -X GET http://<route_to_app>/foo` should equal to `bar
+    ```
