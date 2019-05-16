@@ -6,7 +6,7 @@ To use this service:
     ```
      $ git clone git@github.com:pivotal-cf/cf-redis-example-app.git && \
          pushd cf-redis-example-app && \
-         cf push redis-example-app --no-start && \
+         cf push <app_name> --no-start && \
          popd
     ```
 1. clone the repo
@@ -85,7 +85,7 @@ To use this service:
     ```
 1. restage the app
     ```
-    cf restage <app_name>
+    cf start <app_name>
     ```
 1. test the 
     ```
