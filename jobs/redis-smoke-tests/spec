@@ -1,0 +1,17 @@
+---
+name: redis-smoke-tests
+
+templates:
+  run.erb: bin/run
+
+packages:
+- redis-server-5
+
+consumes:
+- name: redis-connection
+  type: conn
+  properties:
+  - port
+  - password
+
+properties: {}

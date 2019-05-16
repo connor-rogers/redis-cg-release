@@ -7,5 +7,6 @@ pushd redis-5.0.4
   make
 
   cp src/redis-server ${BOSH_INSTALL_TARGET}/redis-server
+  cp src/redis-cli ${BOSH_INSTALL_TARGET}/redis-cli
 
 popd

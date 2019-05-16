@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+REDIS_PORT="<%= link('redis-connection').p('port') %>"
+REDIS_PASSWORD="<%= link('redis-connection').p('password') %>"
+REDIS_PATH=/var/vcap/packages/redis-server-5
+
+$REDIS_PATH/redis-cli -p $REDIS_PORT -a $REDIS_PASSWORD PING
+

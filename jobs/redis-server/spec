@@ -14,3 +14,9 @@ properties:
   password:
     description: The Auth password to use on this Redis server
 
+provides:
+- name: redis-connection
+  type: conn
+  properties:
+  - port
+  - password
